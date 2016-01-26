@@ -1,6 +1,6 @@
 package com.e_commerce.data.model.user;
 
-import com.e_commerce.data.model.common.AbstractExpiringEntity;
+import com.e_commerce.data.model.common.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Customer extends AbstractExpiringEntity implements UserDetails {
+public class Customer extends AbstractEntity implements UserDetails {
 
     private String firstName;
     private String lastName;

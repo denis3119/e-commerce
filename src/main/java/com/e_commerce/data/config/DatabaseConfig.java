@@ -20,9 +20,6 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * @author Yugov Alexandr.
- */
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories("com.e_commerce.data.repository")

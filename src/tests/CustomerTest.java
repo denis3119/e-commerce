@@ -1,6 +1,6 @@
 import com.e_commerce.config.Application;
 import com.e_commerce.data.model.user.Customer;
-import com.e_commerce.service.user.UserService;
+import com.e_commerce.service.UserService;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,8 +39,6 @@ public class CustomerTest {
         userService.remove(user);
         assertNull(userService.getByEmail(testEmail));
     }
-
-
 
 
     private Customer createUser() {

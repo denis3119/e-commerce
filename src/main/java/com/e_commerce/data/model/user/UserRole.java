@@ -1,6 +1,6 @@
 package com.e_commerce.data.model.user;
 
-import com.e_commerce.data.model.common.AbstractExpiringEntity;
+import com.e_commerce.data.model.common.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserRole extends AbstractExpiringEntity {
+public class UserRole extends AbstractEntity {
 
     private String role;
 

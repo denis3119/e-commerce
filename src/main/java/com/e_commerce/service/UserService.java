@@ -1,4 +1,4 @@
-package com.e_commerce.service.user;
+package com.e_commerce.service;
 
 
 import com.e_commerce.data.model.user.Customer;

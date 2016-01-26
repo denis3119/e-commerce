@@ -1,7 +1,6 @@
 package com.e_commerce.config.security;
 
-import com.e_commerce.data.model.user.Customer;
-import com.e_commerce.service.user.UserService;
+import com.e_commerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -21,7 +20,6 @@ public class LoginFail implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         String email = httpServletRequest.getParameter("username");
-        Customer customer = userService.getByEmail(email);
         httpServletResponse.setStatus(401);
         httpServletResponse.sendRedirect("/#/login?error");
     }

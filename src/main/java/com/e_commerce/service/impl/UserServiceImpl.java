@@ -1,10 +1,11 @@
-package com.e_commerce.service.user.impl;
+package com.e_commerce.service.impl;
 
 import com.e_commerce.config.mail.EmailSender;
 import com.e_commerce.data.model.user.Customer;
 import com.e_commerce.data.model.user.UserRole;
 import com.e_commerce.data.repository.UserRepository;
-import com.e_commerce.service.user.UserService;
+import com.e_commerce.service.UserService;
+import com.e_commerce.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +27,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private EmailSender sender;
+
     public Customer get(long ID) {
         return userRepository.getOne(ID);
     }
@@ -57,7 +59,6 @@ public class UserServiceImpl implements UserService {
     public Customer current() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return userRepository.getByEmail(authentication.getName());
-//        return (Customer) authentication.getPrincipal();
     }
 
 
@@ -65,6 +66,7 @@ public class UserServiceImpl implements UserService {
         Set<UserRole> userRoles = new LinkedHashSet<>();
         userRoles.add(new UserRole(ROLE_USER.name()));
         customer.setUserRoles(userRoles);
+        customer.setPassword(UserUtil.getPasswordHash(customer.getPassword()));
         return userRepository.saveAndFlush(customer);
     }
 
@@ -72,5 +74,4 @@ public class UserServiceImpl implements UserService {
     public void remove(Customer customer) {
         userRepository.delete(customer);
     }
-
 }

@@ -1,6 +1,6 @@
 package com.e_commerce.web.controller;
 
-import com.e_commerce.service.user.UserService;
+import com.e_commerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,6 @@ public class ProfileController {
         return "private/edit-profile";
     }
 
-    //  @ResponseBody
     @Secured("ROLE_USER")
     @RequestMapping(value = "/score/layout", method = RequestMethod.GET)
     public String editScoreLayout() {
