@@ -52,9 +52,6 @@ public class DatabaseConfig {
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("com.e_commerce.data.model");
         factory.setDataSource(dataSource);
-
-//        factory.setPersistenceProvider(persistenceInterceptorProvider);
-
         factory.setJpaPropertyMap(Collections.unmodifiableMap(Stream.<AbstractMap.SimpleEntry<String, Object>>of(
                 new AbstractMap.SimpleEntry<>("hibernate.dialect", environment.getProperty("hibernate.dialect")),
                 new AbstractMap.SimpleEntry<>("hibernate.show_sql", environment.getProperty("hibernate.show_sql")),

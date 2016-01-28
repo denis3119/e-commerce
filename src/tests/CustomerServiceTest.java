@@ -1,5 +1,6 @@
 import com.e_commerce.config.Application;
 import com.e_commerce.data.model.user.Customer;
+import com.e_commerce.data.repository.UserRepository;
 import com.e_commerce.service.UserService;
 import org.junit.After;
 import org.junit.Test;
@@ -20,9 +21,11 @@ import static org.junit.Assert.*;
 @ContextConfiguration(classes = Application.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class CustomerTest {
+public class CustomerServiceTest {
     @Autowired
     UserService userService;
+    @Autowired
+    UserRepository userRepository;
     private String testEmail = "test@test.com";
 
     @Test
@@ -36,7 +39,7 @@ public class CustomerTest {
     @Test
     public void Delete() {
         Customer user = createUser();
-        userService.remove(user);
+        userRepository.delete(user);
         assertNull(userService.getByEmail(testEmail));
     }
 
@@ -50,7 +53,7 @@ public class CustomerTest {
     public void deleteUser() {
         Customer customer = userService.getByEmail(testEmail);
         if (customer != null) {
-            userService.remove(customer);
+            userRepository.delete(customer);
         }
     }
 }

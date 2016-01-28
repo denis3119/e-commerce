@@ -2,11 +2,12 @@ package com.e_commerce.service;
 
 
 import com.e_commerce.data.model.user.Customer;
+import com.e_commerce.service.common.MainService;
 
 /**
  * Created by admin on 11/3/2015.
  */
-public interface UserService {
+public interface UserService extends MainService<Customer> {
 
     Customer getByEmail(String email);
 
@@ -18,5 +19,4 @@ public interface UserService {
 
     Customer register(Customer customer);
 
-    void remove(Customer customer);
 }

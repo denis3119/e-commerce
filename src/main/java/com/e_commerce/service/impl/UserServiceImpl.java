@@ -71,7 +71,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void remove(Customer customer) {
-        userRepository.delete(customer);
+    public Customer expired(Customer customer) {
+        customer.setExpired(true);
+        return customer;
     }
 }
