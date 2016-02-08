@@ -6,10 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.List;
+import javax.persistence.*;
+import javax.transaction.Transactional;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * Created by admin on 26.01.2016.
@@ -17,6 +18,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Transactional
 @NoArgsConstructor
 public class Product extends AbstractEntity {
     private long count; //количество товара на складе
@@ -24,8 +26,10 @@ public class Product extends AbstractEntity {
     private Currency currency = Currency.USD; //валюта
 
     @Column(unique = true, nullable = false)
-    private String number; //номер продукта, которыйн не может повторяться
+    private String number = UUID.randomUUID().toString(); //номер продукта, которыйн не может повторяться
 
-    @OneToMany
-    private List<Category> categories; //категории
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Category> categories = new HashSet<>(); //категории
+    @ManyToOne
+    private ProductType productType;
 }

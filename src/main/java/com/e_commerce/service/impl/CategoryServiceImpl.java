@@ -19,4 +19,9 @@ public class CategoryServiceImpl implements CategoryService {
         category.setExpired(true);
         return categoryRepository.saveAndFlush(category);
     }
+
+    @Override
+    public Category create(Category category) {
+        return categoryRepository.saveAndFlush(category);
+    }
 }

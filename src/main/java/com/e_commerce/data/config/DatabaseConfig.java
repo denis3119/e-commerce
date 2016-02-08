@@ -51,11 +51,13 @@ public class DatabaseConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("com.e_commerce.data.model");
-        factory.setDataSource(dataSource);
+        factory.setDataSource(dataSource);//hibernate.enable_lazy_load_no_trans
         factory.setJpaPropertyMap(Collections.unmodifiableMap(Stream.<AbstractMap.SimpleEntry<String, Object>>of(
                 new AbstractMap.SimpleEntry<>("hibernate.dialect", environment.getProperty("hibernate.dialect")),
                 new AbstractMap.SimpleEntry<>("hibernate.show_sql", environment.getProperty("hibernate.show_sql")),
-                new AbstractMap.SimpleEntry<>("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.format_sql"))
+                new AbstractMap.SimpleEntry<>("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.format_sql")),
+                new AbstractMap.SimpleEntry<>("hibernate.enable_lazy_load_no_trans", environment.getProperty("hibernate.enable_lazy_load_no_trans"))
+
         ).collect(Collectors.toMap(AbstractMap.SimpleEntry::getKey, AbstractMap.SimpleEntry::getValue))));
 
         return factory;

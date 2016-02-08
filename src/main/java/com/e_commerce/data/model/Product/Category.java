@@ -5,8 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.transaction.Transactional;
 
 /**
  * Created by admin on 26.01.2016.
@@ -14,8 +16,12 @@ import javax.persistence.OneToOne;
 @Entity
 @Getter
 @Setter
+@Transactional
 @NoArgsConstructor
 public class Category extends AbstractEntity {
+    @Column(nullable = false)
+    String name;
+
     @OneToOne
     private Category subCategory;
 

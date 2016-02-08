@@ -7,4 +7,5 @@ import com.e_commerce.service.common.MainService;
  * Created by admin on 26.01.2016.
  */
 public interface CategoryService extends MainService<Category> {
+    Category create(Category category);
 }
