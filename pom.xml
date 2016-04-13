@@ -62,11 +62,11 @@
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>postgresql</groupId>-->
-            <!--<artifactId>postgresql</artifactId>-->
-            <!--<version>LATEST</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>LATEST</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>

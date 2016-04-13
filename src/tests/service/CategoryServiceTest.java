@@ -48,13 +48,49 @@ package service;//package service;
 //    }
 //}
 
+import com.e_commerce.data.model.Product.Category;
+import com.e_commerce.data.repository.CategoryRepository;
+import com.e_commerce.service.CategoryService;
+import com.e_commerce.service.impl.CategoryServiceImpl;
+import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-public class CategoryServiceTest{
+public class CategoryServiceTest {
+    private CategoryService categoryService = mock(CategoryServiceImpl.class);
+    private CategoryRepository categoryRepository;
+    private Category testCategory = new Category();
+
+    @Before
+    public void init() {
+        when(categoryService.create(any(Category.class))).thenReturn(testCategory);
+    }
+
     @Test
-    public void test(){
-       assertTrue(true);
+    public void createTest() {
+        Category category = create();
+        assertNotNull(category);
+    }
+
+    private Category create() {
+        Category category = new Category();
+        category.setName("category");
+        return categoryService.create(category);
+    }
+
+    private void delete(Category category) {
+        if (categoryRepository.getOne(category.getId()) != null) {
+            categoryRepository.delete(category);
+        }
+    }
+
+    @Test
+    public void test() {
+        assertTrue(true);
     }
 }
