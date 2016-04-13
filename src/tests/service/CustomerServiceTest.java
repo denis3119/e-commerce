@@ -1,3 +1,5 @@
+package service;
+
 import com.e_commerce.config.Application;
 import com.e_commerce.data.model.user.Customer;
 import com.e_commerce.data.repository.UserRepository;

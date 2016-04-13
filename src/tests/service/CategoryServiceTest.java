@@ -1,3 +1,5 @@
+package service;
+
 import com.e_commerce.config.Application;
 import com.e_commerce.data.model.Product.Category;
 import com.e_commerce.data.repository.CategoryRepository;

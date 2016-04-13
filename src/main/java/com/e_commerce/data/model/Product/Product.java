@@ -26,7 +26,7 @@ public class Product extends AbstractEntity {
     private Currency currency = Currency.USD; //валюта
 
     @Column(unique = true, nullable = false)
-    private String number = UUID.randomUUID().toString(); //номер продукта, которыйн не может повторяться
+    private String number = UUID.randomUUID().toString(); //номер продукта, который не может повторяться
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Category> categories = new HashSet<>(); //категории
