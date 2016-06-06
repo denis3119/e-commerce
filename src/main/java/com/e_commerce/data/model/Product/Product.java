@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -21,15 +22,20 @@ import java.util.UUID;
 @Transactional
 @NoArgsConstructor
 public class Product extends AbstractEntity {
+    @OneToMany
+    private List<OtherField> otherFields;
+    @OneToMany
+    private List<OtherField> options;
+    private boolean actual;
     private long count; //количество товара на складе
     private double price; //цена
     private Currency currency = Currency.USD; //валюта
-
+    private double sale;
     @Column(unique = true, nullable = false)
     private String number = UUID.randomUUID().toString(); //номер продукта, который не может повторяться
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Category> categories = new HashSet<>(); //категории
     @ManyToOne
     private ProductType productType;
+    private String description;
 }

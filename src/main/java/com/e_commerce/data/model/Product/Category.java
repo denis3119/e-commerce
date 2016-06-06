@@ -5,10 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by admin on 26.01.2016.
@@ -28,4 +27,6 @@ public class Category extends AbstractEntity {
     public boolean isParent() {
         return subCategory != null;
     }
+    @OneToMany
+    private List<Product> products;
 }

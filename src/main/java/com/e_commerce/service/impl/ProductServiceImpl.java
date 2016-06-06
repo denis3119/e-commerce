@@ -30,6 +30,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product editName(long id, String name) {
+        return productRepository.findOne(id);
+    }
+
+    @Override
     public Product joinCategory(Product product, Category category) {
         product = productRepository.getOne(product.getId());
         product.getCategories().add(category);

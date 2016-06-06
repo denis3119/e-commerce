@@ -18,4 +18,9 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public ProductType expired(ProductType item) {
         return productTypeRepository.saveAndFlush(item);
     }
+
+    @Override
+    public ProductType editName(long id, String name) {
+        return productTypeRepository.findOne(id);
+    }
 }

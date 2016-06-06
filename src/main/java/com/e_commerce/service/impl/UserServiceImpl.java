@@ -75,4 +75,10 @@ public class UserServiceImpl implements UserService {
         customer.setExpired(true);
         return customer;
     }
+
+    @Override
+    public Customer editName(long id, String name) {
+        return userRepository.findOne(id);
+    }
+
 }

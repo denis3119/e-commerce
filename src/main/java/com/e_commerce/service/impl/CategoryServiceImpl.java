@@ -21,7 +21,22 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Category editName(long id, String name) {
+        return categoryRepository.findOne(id);
+    }
+
+    @Override
     public Category create(Category category) {
         return categoryRepository.saveAndFlush(category);
+    }
+
+    @Override
+    public Category update(Category category) {
+        return categoryRepository.saveAndFlush(category);
+    }
+
+    @Override
+    public Category getCategory(long id) {
+        return categoryRepository.findOne(id);
     }
 }

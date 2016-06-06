@@ -5,4 +5,6 @@ package com.e_commerce.service.common;
  */
 public interface MainService<T> {
     T expired(T item);
+
+    T editName(long id, String name);
 }

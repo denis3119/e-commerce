@@ -26,4 +26,6 @@ public abstract class AbstractEntity {
 
     @Column
     private boolean expired = false;
+    @Column
+    private String alias;
 }

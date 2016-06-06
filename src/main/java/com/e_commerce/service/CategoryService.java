@@ -8,4 +8,6 @@ import com.e_commerce.service.common.MainService;
  */
 public interface CategoryService extends MainService<Category> {
     Category create(Category category);
+    Category update(Category category);
+    Category getCategory(long id);
 }
